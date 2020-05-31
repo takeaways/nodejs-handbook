@@ -180,6 +180,7 @@
   - 전역 스코프에 불필요한 변수를 추가해서 오염시키는 것을 방지할 수 있다.
     ```javascript
     (function() {
-      
+      var lang = "hello"
     })();
+    console.log(lang) // 내부의 변수로 접근 불가능
     ```
