@@ -184,3 +184,65 @@
     })();
     console.log(lang) // 내부의 변수로 접근 불가능
     ```
+## setInterval
+ - 특정 시간마다 코드를 시작하게 할 수 있다.
+      ```javascript
+      setInterval(()=>{
+        console.log("hello") // 1초마다 실행된다.
+      },1*1000);
+      ```
+## Error Handling
+ - 오류에 대한 코드 처리
+    ```javascript
+    try{
+     a
+     console.log(a); // Error 발생;
+    }catch (e) {
+       console.error(e) 에러 처리
+    }
+    console.log('a')  //에러 처리된 다음 실행
+    ```
+   
+## Arrow Function
+ - () => {} 
+ - this의 근본적인 문제를 해결한다.
+    ```javascript
+    function add(a,b){return a +b;}
+    const add = (a,b) => a+b; 
+    ```
+ - curried function : 합성함수 파라미터를 반복적으로 받는 행위를 줄일 수 있다.
+   ```javascript
+   'use strict'
+   //1. 회원들에게 혜택을 주어야 한다. 고객의 등급을 어떻게 처리 할 것인가?
+   function getDiscoout(price, rate){
+       return price * rate;
+   }
+   getDiscoout(10000, 0.5);
+   //2. 위의 함수를 arrow평션을 이용한다. queried 
+   const getDiscount2 = (price, rate) => price * rate;
+   getDicount2(1000,0.2);
+   
+   const tenpercentOff = rate => price => rate * price;
+   const getDiscount = tenpersontOff(0.1);
+   getDiscount(1000) // 100;
+   ```   
+# [2] Class
+1. OOP 개념을 쉽게 사용할 수 있도록 만들어진 Sugar Syntax
+2. ES2015 = ES6 입니다.
+3. 데이터 베이스 매니져, 캐쉬 데이터 매니저를 사용할 때 아주 도움이 됩니다. !!
+4. 필요한 이유는?
+    - 환경설정 파일을 구성할 때 사용하는 것이 가장 크다.
+    - 동일한 환경 변수를 읽는 행위가 많아 지면 낭비다.
+    - 사용자는 5초 이상 페이지를 기다리지 않는다.
+    - 싱글톤 패턴과 클래스를 생성하면 한 번만 생성된다. - 불필요한 작업을 생략할 수 있다.
+    ```javascript
+    'use strict'
+    // 중복되는 SQL을 다시 작성하지 않도록할 수 있다.
+    class CacheManager{
+          constructor() { //async 사용할 수 없으며, 동기화된 코드로만 작성해야 합니다.
+               this.config = []          
+          }
+    }
+   
+    const cacheManager = new CacheManager();
+    ```
